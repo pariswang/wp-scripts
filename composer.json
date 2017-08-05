@@ -6,6 +6,10 @@
         "email": "suppersoft@gmail.com",
         "role": "Developer"
     }],
+    "type": "library",
+    "require": {
+        "php": ">=5.4",
+    },
     "autoload": {
         "psr-4": {
             "WPScript\\": ""
