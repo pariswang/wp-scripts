@@ -5,5 +5,10 @@
         "name": "Paris",
         "email": "suppersoft@gmail.com",
         "role": "Developer"
-    }]
+    }],
+    "autoload": {
+        "psr-4": {
+            "WPScript\\": ""
+        }
+    }
 }
