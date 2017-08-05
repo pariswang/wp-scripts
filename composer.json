@@ -1,0 +1,9 @@
+{
+    "name": "wp-scripts",
+    "version": "1.0.0",
+    "authors": [{
+        "name": "Paris",
+        "email": "suppersoft@gmail.com",
+        "role": "Developer"
+    }]
+}
