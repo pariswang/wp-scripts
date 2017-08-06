@@ -35,12 +35,12 @@ class Project{
         $wp_content_dir = "wp-content";
         $wp_home = getcwd() . '/wp/';
         $define = "<?php\r\n".
-            "if( ! defined('WP_CONTENT_URL') )\r\n".
-            "\tdefine( 'WP_CONTENT_URL', '" . getcwd() . "/" . $wp_content_dir . "' );";
+            "if( ! defined('WP_CONTENT_DIR') )\r\n".
+            "\tdefine( 'WP_CONTENT_DIR', '" . getcwd() . "/" . $wp_content_dir . "' );";
 
         $wp_index = $wp_home . 'index.php';
         $index = file_get_contents($wp_index);
-        if(strpos($index, "WP_CONTENT_URL")===false){
+        if(strpos($index, "WP_CONTENT_DIR")===false){
             $index = str_ireplace( "<?php", $define, $index );
             file_put_contents( $wp_index, $index );
         }
