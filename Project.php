@@ -11,6 +11,7 @@ class Project{
         // $config = $composer->getConfig();
         // $package = $composer->getPackage();
         static::rewriteServer();
+        static::moveWPContent();
     }
 
     protected static function rewriteServer(){
@@ -27,6 +28,21 @@ class Project{
         $filename = getcwd() . '/.htaccess';
         if(!file_exists($filename)){
             file_put_contents($filename, $apacheRewrite);
+        }
+    }
+
+    protected static function moveWPContent(){
+        $wp_content_dir = "wp-content";
+        $wp_home = getcwd() . '/wp/';
+        $define = "<?php\r\n".
+            "if( ! defined('WP_CONTENT_URL') )\r\n".
+            "\tdefine( 'WP_CONTENT_URL', '" . getcwd() . "/" . $wp_content_dir . "' );";
+
+        $wp_index = $wp_home . 'index.php';
+        $index = file_get_contents($wp_index);
+        if(strpos($index, "WP_CONTENT_URL")===false){
+            $index = str_ireplace( "<?php", $define, $index );
+            file_put_contents( $wp_index, $index );
         }
     }
 }
